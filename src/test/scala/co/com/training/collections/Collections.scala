@@ -47,13 +47,11 @@ class Collections extends  FunSuite{
   }
 
   test("fold"){
-    val result = listTest.foldLeft(5)((x,y) => x + y)
+    val result = listTest.fold(5)((x,y) => x + y)
     println(result)
   }
 
   test("fold left"){
-
-
     val result = listTest2.foldLeft(""){
       (a,b) =>
         println(a)
@@ -86,6 +84,7 @@ class Collections extends  FunSuite{
 
   test("Find the last element of a list"){
 
+    numbers.last
   }
 
   test("Find the Kth element of a list"){
@@ -97,10 +96,21 @@ class Collections extends  FunSuite{
 
   test("convert all the numbers to even"){
 
+    val evenNumbers = numbers.map { x =>
+      if (x % 2 != 0) {
+        x * 2
+      }else{
+        x
+      }
+    }
+    println(evenNumbers)
   }
 
-  test("sum the even numbers"){
-
+  test("sum the even numbers") {
+    val evenSum = numbers.filter(x => x % 2 == 0).reduce { (x, y) =>
+      x + y
+    }
+    print(evenSum)
   }
 
   test("convert the even numbers to string"){
